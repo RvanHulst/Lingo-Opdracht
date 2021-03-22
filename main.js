@@ -57,7 +57,7 @@ function speelbord() {
 }
 
 
-r = 1;
+wordChoose = 1;
 
 function user_input() {
 	var input_word = document.getElementById("text_in").value;
@@ -66,10 +66,10 @@ function user_input() {
 	console.log(input_word);
 	console.log(check_word);
 
-	document.getElementById('div_1_' + r).style.backgroundColor = "white";
+	document.getElementById('div_1_' + wordChoose).style.backgroundColor = "white";
 
-	for (var a = 1; a < 6; a++) {
-		document.getElementById('div_' + a + '_' + r).innerHTML = check_word[a - 1];
+	for (var wordSize = 1; wordSize < 6; wordSize++) {
+		document.getElementById('div_' + wordSize + '_' + wordChoose).innerHTML = check_word[wordSize - 1];
 	}
 
 	check();
@@ -88,7 +88,7 @@ function check(){
 	
 	for (var green = 0; green <= 4; green++) {
 		if (control[green] == check_word[green]) {
-			document.getElementById('div_' + (green+1) + '_' + r).style.backgroundColor = "green";
+			document.getElementById('div_' + (green+1) + '_' + wordChoose).style.backgroundColor = "green";
 			control[green] = "*";
 			check_word[green] = "";
 		}
@@ -96,17 +96,17 @@ function check(){
 	for(i=1; i<=5; i++){
 		var pos = control.indexOf(check_word[i-1]);
 		if (pos != -1 && control != "*"){
-			document.getElementById('div_' + i + '_' + r).style.backgroundColor = "orange";
+			document.getElementById('div_' + i + '_' + wordChoose).style.backgroundColor = "orange";
 			control[pos] = "*";
 		}
 	}
-	r++;
+	wordChoose++;
 	console.log(control);
 	if (control[0] == "*" && control[1] == "*" && control[2] == "*" && control[3] == "*" && control[4] == "*") {
 		alert("Je hebt gewonnen, probeer het nog eens");
 		location.reload();
 	}
-	if (r == 6) {
+	if (wordChoose == 6) {
 		alert('Je hebt gefaalt probeer het opnieuw het woord was '+ chars +'!!');
 		location.reload();
 	}
