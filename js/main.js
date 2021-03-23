@@ -72,11 +72,11 @@ function user_input() {
 		document.getElementById('div_' + wordSize + '_' + wordChoose).innerHTML = check_word[wordSize - 1];
 	}
 
-	check();
+	checkWord();
 }
 
 
-function check(){
+function checkWord(){
 	
 	//check_word = user input
 	//chars = het woord
