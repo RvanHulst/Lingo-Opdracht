@@ -42,11 +42,3 @@ footer{
 	background-color: #2196F3;
 	color: black;
 }
-#circle {
-    float: left;
-    width: 300px;
-    height: 300px;
-    margin: 20px;
-    shape-outside: circle();
-    clip-path: circle();
-    background: lightblue;

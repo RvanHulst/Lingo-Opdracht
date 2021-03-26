@@ -79,13 +79,17 @@ function user_input() {
 function checkWord(){
 	
 	//check_word = user input
-	//chars = het woord
+	//chars = is de array van de characters.
 	control = new Array();
 
+
+	//Verdubbelde de chars array om te kunnen bewerken.
 	for (var num = 0; num <= 4; num++) {
 		control.push(chars[num]);
+		console.log(control);
 	}
 	
+	//Als de overeenkomt met de juiste letter en de juiste plaats.
 	for (var green = 0; green <= 4; green++) {
 		if (control[green] == check_word[green]) {
 			document.getElementById('div_' + (green+1) + '_' + wordChoose).style.backgroundColor = "green";
@@ -93,13 +97,15 @@ function checkWord(){
 			check_word[green] = "";
 		}
 	}
+	//Geeft aan als de letter goed maar is maar op verkeerde locatie.
 	for(i=1; i<=5; i++){
-		var pos = control.indexOf(check_word[i-1]);
-		if (pos != -1 && control != "*"){
+		var posistie = control.indexOf(check_word[i-1]);
+		if (posistie != -1 && control != "*"){
 			document.getElementById('div_' + i + '_' + wordChoose).style.backgroundColor = "orange";
-			control[pos] = "*";
+			control[posistie] = "*";
 		}
 	}
+
 	wordChoose++;
 	console.log(control);
 	if (control[0] == "*" && control[1] == "*" && control[2] == "*" && control[3] == "*" && control[4] == "*") {
