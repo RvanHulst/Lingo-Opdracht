@@ -1,6 +1,8 @@
+// Pakt een woord uit lingo-nl.
 function wordSelector() {
 	var selector = Math.floor(Math.random() * words.length);
 	console.log(words[selector]);
+	// split haalt de leters uit elkaar en zet het in een array.
 	chars = words[selector].split('');
 	console.log(chars);
 }
@@ -19,8 +21,6 @@ function speelbord() {
 	div_1_1.style.backgroundColor = "green";
 
 	input = document.createElement('input');
-	footer.appendChild(input);
-	footer.style.textAlign = "center";
 	input.style.marginTop = "25px";
 	input.style.height = "40px";
 	input.style.width = "240px";
@@ -29,6 +29,9 @@ function speelbord() {
 	input.type = "text";
 	input.style.textAlign = "center";
 	input.id = "text_in";
+
+	footer.appendChild(input);
+	footer.style.textAlign = "center";
 
 	k = 2;
 	
@@ -98,11 +101,17 @@ function checkWord(){
 		}
 	}
 	//Geeft aan als de letter goed maar is maar op verkeerde locatie.
-	for(i=1; i<=5; i++){
-		var posistie = control.indexOf(check_word[i-1]);
-		if (posistie != -1 && control != "*"){
-			document.getElementById('div_' + i + '_' + wordChoose).style.backgroundColor = "orange";
-			control[posistie] = "*";
+	//Eerste for loop checked voor fouten letter/letters
+	for (orange=0; orange<=4; orange++) {
+		if (control[orange] != '*') {
+			console.log('letter ', orange, ' is fout')
+			//Eerst kijken als een leter fout is en daarna loop je door het woord heen om te kijken als deze letter ergens anders wel klopt
+			for (i=0; i<=4; i++){
+				console.log(check_word[orange], control[i])
+				if (check_word[orange] == control[i]){
+					document.getElementById('div_' + (orange+1) + '_' + wordChoose).style.backgroundColor = "orange";
+				}
+			}
 		}
 	}
 
